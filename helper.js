@@ -57,7 +57,9 @@ const fetchBandOracle = async (symbols) => {
 }
 
 const secp256k1LockScript = async () => {
+  console.log("=-=-=-=-= 2.2.0.a.0")
   const secp256k1Dep = (await ckb.loadDeps()).secp256k1Dep
+  console.log("=-=-=-=-= 2.2.0.a.1")
   return {
     codeHash: secp256k1Dep.codeHash,
     hashType: secp256k1Dep.hashType,
@@ -104,7 +106,9 @@ const getCells = async () => {
 const updateOracleLiveCells = async (liveCells, pricesWithTimestamps) => {
   console.log("=-=-=-=-= 2.2.0")
   const secp256k1Dep = (await ckb.loadDeps()).secp256k1Dep
+  console.log("=-=-=-=-= 2.2.0.a")
   const lock = await secp256k1LockScript()
+  console.log("=-=-=-=-= 2.2.0.b")
   const pricesData = pricesWithTimestamps.map(({ price, timestamp }, index) =>
     generateBandData(price, index, timestamp)
   )
